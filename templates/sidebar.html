@@ -1,0 +1,52 @@
+
+<aside class="col-md-4 px-4">
+    <!-- Social Links -->
+    <div class="social-links row text-center">
+        <div class="col-sm-4  py-5">
+            <a href="" class="social-link w-100">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+        <div class="col-sm-4  py-5 secondary-color">
+            <a href="" class="social-link w-100">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        <div class="col-sm-4 py-5">
+            <a href="" class="social-link w-100">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </div>
+    </div>
+    <h4 class="aside-heading mt-4 mb-3 pl-2">Latest Posts</h4>
+    {% for post in most_recent %}
+    <a href="{{ post.get_absolute_url }}">
+        <article class="row author mb-3">
+            <div class="col-sm-4">
+                <img src="{{ post.thumbnail.url }}" alt="" class="img-fluid rounded-circle">
+            </div>
+            <div class="col-sm-8">
+                <h5 class="m-0">{{ post.title }}</h5>
+                <p class="m-0">Lorem ipsum dolor sit amet consectetur dio ex nostrum eligendi animi quod laudantium! Eligendi.</p>
+                <div class="social-links">
+                    <a href="#"></a>
+                </div>
+                <div class="social-links">
+                    <a href="#"></a>
+                </div>
+                <div class="social-links">
+                    <a href="#"></a>
+                </div>
+            </div>
+        </article>
+    </a>
+    {% endfor %}
+    
+    
+    <h4 class="aside-heading mt-4  mb-3 pl-2">Popular Categories</h4>
+    <div class="badges w-100">
+        {% for cat in category_count %}
+            <a href="#">{{ cat.categories__title }} ({{ cat.categories__title__count }})</a>
+        {% endfor %}       
+    </div>
+</aside>

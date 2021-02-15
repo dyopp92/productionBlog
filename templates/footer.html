@@ -1,0 +1,36 @@
+<footer class="footer py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <a href="" class="footer-logo">Code Brew</a>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas, officiis madelectus nihil aut modi totam tenetur.</p>
+            </div>
+            <div class="col-md-4">
+                <h4>Usefull Links</h4>
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Terms of Service</a></li>
+                    <li><a href="">Privacy</a></li>
+                    <li><a href="">Contact</a></li>
+                    <li><a href="">Newsletter</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h4>Newsletter</h4>
+                <div>
+                    <form action="." method="POST">
+                    {% csrf_token %}
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" name="email" class="form-control" placeholder="Enter email">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="w-100 text-center pt-4">
+            <p>Made by Code Brew &copy 2020. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>

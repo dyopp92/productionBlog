@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!--Banner Section-->
+    <section id="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="promo-title">Django Getting Started</p>
+                    <p>Subscribe to Code Brew to watch more Django, JavaScript, and CSS Tutorials</p>
+                    <a href="#"><img src="" class="play-btn">Watch Tutorials</a>
+                </div>
+                <div class="col-md-6 text-center">
+                    <img class="img-fluid" src="{% static 'img/techTree.png' %}">
+                </div>
+            </div>
+        </div>
+
+        <img class="bottom-img" src="{% static 'img/curve.png' %}">
+
+    </section>
+
+
+
+    <!-- Hero Section-->
+
+    <section class="hero py-4">
+
+        <div class="container">
+           
+            <div class="row">
+                {% for post in single_post %}
+                <div class="col-lg-8">
+                    <div class="hero-post shadow mb-3">
+                        <img class="img-fluid" alt="" src="{{ post.thumbnail.url }}">
+                        <div class="hero-post-badges text-center">
+                            <a class="p-2 mb-2" href="#">{{ post.timestamp|timesince }} ago</a>
+                            {% for cat in post.categories.all %}
+                            <a class="p-2" href="#">{{ cat }}</a>
+                            {% endfor %}
+                        </div>
+                        <div class="hero-post-content">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <img class="img-fluid rounded-circle" src="{{ post.author.profile_picture.url }}" alt="Author">
+                                </div>
+                                <div class="col-md-10">
+                                    <h2 class="pl-3" >{{ post.title }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                
+                <div class="col-lg-4">
+                    {% for post in side_posts %}
+                    <div class="hero-post shadow mb-3">
+                        <a href="">
+                            <img class="img-fluid" alt="" src="{{ post.thumbnail.url }}">
+                        </a>
+                        <div class="hero-post-badges text-center">
+                            <a class="p-1 mb-2" href="#">{{ post.timestamp|timesince }} ago</a>
+                            {% for cat in post.categories.all %}
+                            <a class="p-1" href="#">{{ cat }}</a>
+                            {% endfor %}
+                        </div>
+                        <div class="hero-post-content">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <img class="img-fluid rounded-circle" src="{{ post.author.profile_picture.url }}" alt="Author">
+                                </div>
+                                <div class="col-sm-9">
+                                    <h3 class="mt-2 pl-3" >{{ post.title }}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- <div class="hero-post shadow">
+                        <img class="img-fluid" alt="" src="{% static 'img/nb.jpg' %}">
+                        <div class="hero-post-badges">
+                            <a href="#">15. March 2020</a>
+                            <a href="#">Technology</a>
+                        </div>
+                        <div class="hero-post-content">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <img class="img-fluid rounded-circle" src="{% static 'img/author.jpg' %}" alt="Author">
+                                </div>
+                                <div class="col-sm-9">
+                                    <h3>My first blog post...</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+
+    <!-- Blog Section-->
+
+    <section class="blog-posts py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% for obj in object_list %}
+                    <article class="blog-post mb-3">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <img src="{{ obj.thumbnail.url }}" alt="" class="img-fluid">
+                            </div>
+                            <div class="col-sm-8">
+                                <h3 class="m-0 mt-2">{{ obj.title }}</h3>
+                                <p  class="m-0">{{ obj.overview }}</p>
+                                <div class="badge">
+                                    {% for cat in obj.categories.all %}
+                                    <a href="#">{{ cat }}</a>
+                                    {% endfor %}
+                                    <a href="#">AMD</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                    
+                </div>
+                
+                {% include 'sidebar.html' with most_recent=most_recent category_count=category_count %}
+                    
+            </div>
+        </div>
+    </section>
+
+
+
+
+{% endblock content %}

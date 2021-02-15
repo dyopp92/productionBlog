@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<!-- Blog Section-->
+
+<section class="blog-posts py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                {% for post in queryset %}
+                <article class="blog-post mb-3">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <img src="{{ post.thumbnail.url }}" alt="" class="img-fluid">
+                            <a class="post-link p-1" href="{{ post.get_absolute_url }}">View Post</a>
+                        </div>
+                        <div class="col-sm-8">
+                            <h3 class="m-0 mt-2">{{ post.title }}</h3>
+                            <p  class="m-0">{{ post.overview }}</p>
+                            <div class="badge">
+                                
+                                {% for cat in post.categories.all %}
+                                <a href="#">{{ cat }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                {% endfor %}
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination pagination-template d-flex justify-content-center">
+                      {% if queryset.has_previous %}                
+                      <li class="page-item"><a href="?{{ page_request_var }}={{ queryset.previous_page_number }}" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
+                      {% endif %}
+                      <li class="page-item"><a href="?{{ page_request_var }}={{ queryset.number }}" class="page-link active">{{ queryset.number }}</a></li>
+                      {% if queryset.has_next %}
+                      <li class="page-item"><a href="?{{ page_request_var }}={{ queryset.next_page_number }}" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
+                      {% endif %}
+                    </ul>
+                  </nav>
+            </div>
+            
+            {% include 'sidebar.html' with most_recent=most_recent category_count=category_count %}
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}
