@@ -25,19 +25,19 @@ SECRET_KEY = '&w@@128f0njhwyix6_p#m@c)$!@lm5t6(19%^p$3-6m&9i1oka'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-if DEBUG:
-    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'myproject',
-        'USER': 'myprojectuser',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
+#if DEBUG:
+#    DATABASES = {
+#   'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'myproject',
+#        'USER': 'myprojectuser',
+#        'PASSWORD': 'password',
+#        'HOST': 'localhost',
+#        'PORT': '',
+#   }
+#}
 
-else:
+#else:
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
