@@ -24,7 +24,30 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '&w@@128f0njhwyix6_p#m@c)$!@lm5t6(19%^p$3-6m&9i1oka'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
+if DEBUG:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'myproject',
+        'USER': 'myprojectuser',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+
+else:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'blogDB',
+        'USER': 'blog_admin',
+        'PASSWORD': 'Khakiyellowfin2014',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 
 ALLOWED_HOSTS = ['138.197.77.125']
 
