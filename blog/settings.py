@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '&w@@128f0njhwyix6_p#m@c)$!@lm5t6(19%^p$3-6m&9i1oka'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 #if DEBUG:
 #    DATABASES = {
 #   'default': {
@@ -49,7 +49,7 @@ DATABASES = {
     }
 }
 
-ALLOWED_HOSTS = ['138.197.77.125', '127.0.0.1']
+ALLOWED_HOSTS = ['143.198.8.154']
 
 
 # Application definition
