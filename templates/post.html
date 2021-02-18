@@ -7,11 +7,15 @@
   .post-body img {
     width: 100%;
   }
-  .post{
+  .post-single a{
+    color: white;
+  }
+  .post_background {
+    background-color: black;
     color: white;
   }
 </style>
-
+  <div class="post_background">
     <div class="container">
       <div class="row">
         <!-- Latest Posts -->
@@ -29,8 +33,8 @@
                 </div>
                 <h1>{{ post.title }}<a href="#"></a></h1>
                 <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img src="{{ post.author.profile_picture.url }}" alt="..." class="img-fluid"></div>
-                    <div class="title"><span>{{ post.author.user.username }}</span></div></a>
+                    <div class="avatar"><img src="{{ post.author.profile_picture.url }}" alt="..." class="img-fluid rounded-circle"></div>
+                    <div class="title m-2"><span>{{ post.author.user.username }}</span></div></a>
                   <div class="d-flex align-items-center flex-wrap">       
                     <div class="date"><i class="icon-clock"></i> {{ post.timestamp|timesince }} ago</div>
                     <div class="views"><i class="icon-eye"></i> {{ post.view_count }}</div>
@@ -41,27 +45,24 @@
                 {{ post.content | safe }}
                 </div>
                 <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row">
-                {% if post.previous_post %}
-                <a href="{{ post.previous_post.get_absolute_url }}" class="prev-post text-left d-flex align-items-center">
-                    <div class="icon prev"><i class="fa fa-angle-left"></i></div>
-                    <div class="text"><strong class="text-primary">Previous Post </strong>
-                      <h6>{{ post.previous_post.title }}</h6>
-                    </div>
-                </a>
-                {% endif %}
-                {% if post.next_post %}
-                <a href="{{ post.next_post.get_absolute_url }}" class="next-post text-right d-flex align-items-center justify-content-end">
-                    <div class="text"><strong class="text-primary">Next Post </strong>
-                      <h6>{{ post.next_post.title }}</h6>
-                    </div>
-                    <div class="icon next"><i class="fa fa-angle-right">   </i></div>
-                </a>
-                {% endif %}
+                  {% if post.previous_post %}
+                  <a href="{{ post.previous_post.get_absolute_url }}" class="prev-post text-left d-flex align-items-center">
+                      <div class="icon prev p-2"><i class="fa fa-angle-left"></i></div>
+                      <div class="text"><strong class="text-primary">Previous Post </strong>
+                        <h6>{{ post.previous_post.title }}</h6>
+                      </div>
+                  </a>
+                  {% endif %}
+                  {% if post.next_post %}
+                  <a href="{{ post.next_post.get_absolute_url }}" class="next-post text-right d-flex align-items-center justify-content-end">
+                      <div class="text p-2"><strong class="text-primary">Next Post </strong>
+                        <h6>{{ post.next_post.title }}</h6>
+                      </div>
+                      <div class="icon next"><i class="fa fa-angle-right">   </i></div>
+                  </a>
+                  {% endif %}
                 </div>
                 <div class="post-comments">
-                  <header>
-                    <h3 class="h6">Post Comments<span class="no-of-comments">({{ post.comments.count }})</span></h3>
-                  </header>
                   {% for comment in post.get_comments %}
                   <div class="comment">
                     <div class="comment-header d-flex justify-content-between">
@@ -76,30 +77,12 @@
                         <div class="title"><strong>{{ comment.user.username }}</strong><span class="date">{{ comment.timestamp|timesince }} ago</span></div>
                       </div>
                     </div>
-                    <div class="comment-body">
-                      <p>{{ comment.content }}</p>
-                    </div>
+                    
                   </div>
                   {% endfor %}
                 </div>
-                {% if request.user.is_authenticated %}
-                <div class="add-comment">
-                  <header>
-                    <h3 class="h6">Leave a reply</h3>
-                  </header>
-                  <form method="POST" action="." class="commenting-form">
-                    {% csrf_token %}
-                    <div class="row">
-                      <div class="form-group col-md-12">
-                        {{ form.media }}
-                      </div>
-                      <div class="form-group col-md-12">
-                        <button type="submit" class="btn btn-secondary">Submit</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                {% endif %}
+                
+                
               </div>
             </div>
           </div>
@@ -107,4 +90,5 @@
         {% include 'sidebar.html' with most_recent=most_recent category_count=category_count %}       
       </div>
     </div>
+  </div>
 {% endblock content %}
