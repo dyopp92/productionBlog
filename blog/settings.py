@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '&w@@128f0njhwyix6_p#m@c)$!@lm5t6(19%^p$3-6m&9i1oka'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 #if DEBUG:
 #    DATABASES = {
 #   'default': {
