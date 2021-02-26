@@ -32,9 +32,13 @@
            
             <div class="row">
                 {% for post in single_post %}
+                <a href="{{ post.get_absolute_url }}">
                 <div class="col-lg-8">
                     <div class="hero-post shadow mb-3">
-                        <img class="img-fluid" alt="" src="{{ post.thumbnail.url }}">
+                        
+                        
+                            <img class="img-fluid" alt="" src="{{ post.thumbnail.url }}">
+                        
                         <div class="hero-post-badges text-center">
                             <a class="p-2 mb-2" href="#">{{ post.timestamp|timesince }} ago</a>
                             {% for cat in post.categories.all %}
@@ -53,6 +57,7 @@
                         </div>
                     </div>
                 </div>
+                </a>
                 {% endfor %}
                 
                 <div class="col-lg-4">

@@ -5,6 +5,7 @@ from django.db.models import Count, Q
 from marketing.models import Signup
 
 
+
 def search(request):
     queryset = Post.objects.all()
     query = request.GET.get('q')
@@ -90,3 +91,6 @@ def post(request, id):
     }
 
     return render(request, 'post.html', context)
+
+
+

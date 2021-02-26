@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from posts.views import index, blog, post, search
 from posts import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
@@ -27,6 +28,7 @@ urlpatterns = [
     path('search/', search, name='search'),
     path('post/<id>', post, name='post-detail'),
     path('ckeditor', include('ckeditor_uploader.urls')),
+
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 if settings.DEBUG:
