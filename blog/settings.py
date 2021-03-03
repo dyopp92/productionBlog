@@ -49,7 +49,7 @@ DATABASES = {
     }
 }
 
-ALLOWED_HOSTS = ['67.205.166.4', 'www.codebrew.digital', 'codebrew.digital']
+ALLOWED_HOSTS = ['64.225.51.19', 'www.codebrew.digital', 'codebrew.digital']
 
 
 # Application definition
