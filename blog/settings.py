@@ -43,13 +43,13 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'blogdb',
         'USER': 'blog_admin',
-        'PASSWORD': 'testing123',
+        'PASSWORD': 'Cordobamini01!',
         'HOST': 'localhost',
         'PORT': '',
     }
 }
 
-ALLOWED_HOSTS = ['64.225.51.19', 'www.codebrew.digital', 'codebrew.digital']
+ALLOWED_HOSTS = ['64.225.51.19']
 
 
 # Application definition
