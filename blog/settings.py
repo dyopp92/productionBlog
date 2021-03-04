@@ -49,7 +49,7 @@ DATABASES = {
     }
 }
 
-ALLOWED_HOSTS = ['64.225.51.19']
+ALLOWED_HOSTS = ['174.138.57.167']
 
 
 # Application definition
